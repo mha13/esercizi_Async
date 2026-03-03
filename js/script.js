@@ -5,21 +5,50 @@ const formStudenti = document.getElementById("form-studenti");
 
 async function getStudenti() {
   const response = await fetch(ENDPOINT);
-  const studenti = response.json();
+  const studenti = await response.json();
   return studenti;
 }
 
 const stampaStudenti = (studenti) => {
+  const selezionati = JSON.parse(localStorage.getItem("Selezione") || "[]");
+
   studenti.forEach((studente) => {
     const card = document.createElement("div");
-    card.classList.add("card");
-    card.classList.add("col-4");
+    card.classList.add("card", "col-4", "p-4");
+
     card.innerHTML = `
-    <img src="${studente.avatar}">
-    <div class="card-body">
+      <img src="${studente.avatar}">
+      <div class="card-body">
         <h5 class="card-title">${studente.nome} ${studente.cognome}</h5>
-    </div>
+      </div>
     `;
+
+    const buttonSelezione = document.createElement("button");
+    buttonSelezione.innerText = "Seleziona";
+    buttonSelezione.classList.add("btn", "btn-primary");
+
+    const giàSelezionato = selezionati.some((s) => s.id === studente.id);
+
+    if (giàSelezionato) {
+      buttonSelezione.classList.replace("btn-primary", "btn-secondary");
+      buttonSelezione.innerHTML = "Scelto ✅";
+    }
+
+    buttonSelezione.addEventListener("click", () => {
+      const selezionati = JSON.parse(localStorage.getItem("Selezione") || "[]");
+
+      const giàSelezionato = selezionati.some((s) => s.id === studente.id);
+
+      if (!giàSelezionato) {
+        selezionati.push(studente);
+        localStorage.setItem("Selezione", JSON.stringify(selezionati));
+      }
+
+      buttonSelezione.classList.replace("btn-primary", "btn-secondary");
+      buttonSelezione.innerHTML = "Scelto ✅";
+    });
+
+    card.appendChild(buttonSelezione);
     feed.appendChild(card);
   });
 };
@@ -60,13 +89,13 @@ formStudenti.addEventListener("submit", (e) => {
 });
 
 async function scaricaStudenti(studente) {
-  const response = await fetch(ENDPOINT,{
+  const response = await fetch(ENDPOINT, {
     method: "POST",
-    headers:{
-        "Content-type" : "application/json"
+    headers: {
+      "Content-type": "application/json",
     },
-    body: JSON.stringify(studente)
+    body: JSON.stringify(studente),
   });
-  const studenti = (response).json();
+  const studenti = await response.json();
   return studenti;
 }
