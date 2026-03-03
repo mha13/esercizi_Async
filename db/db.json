@@ -1,0 +1,35 @@
+{
+  "studenti": [
+    {
+      "id": "1",
+      "nome": "Anna",
+      "cognome": "Verdi",
+      "avatar": "https://mockmind-api.uifaces.co/content/human/219.jpg"
+    },
+    {
+      "id": "2",
+      "nome": "Paolo",
+      "cognome": "Gialli",
+      "avatar": "https://mockmind-api.uifaces.co/content/human/222.jpg"
+    },
+    {
+      "id": "3",
+      "nome": "Maria",
+      "cognome": "Bianchi",
+      "avatar": "https://mockmind-api.uifaces.co/content/human/128.jpg"
+    },
+    {
+      "id": "4",
+      "nome": "Luca",
+      "cognome": "Verdi",
+      "avatar": "https://mockmind-api.uifaces.co/content/human/80.jpg"
+    },
+    {
+      "id": "28e0",
+      "nome": "hossein",
+      "cognome": "Abdollahi",
+      "avatar": "https://mockmind-api.uifaces.co/content/human/222.jpg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

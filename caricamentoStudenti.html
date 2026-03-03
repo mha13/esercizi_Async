@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON SERVER</title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Compila il form e crea classe Studente con le seguenti proprietà(nome, cognome, avatar[un url scelto a caso online]). Al click sul pulsante Mostra Studenti stampa una card (utilizzando Bootstrap) per ogni singolo studente. All'interno di ogni card ci sarà un pulsante "Seleziona", al click sul seguente pulsante verrà aggiunto ad un corso singolo. Crea una pagina corso linkata alla pagina principale nella quale visualizzerai gli studenti che hai selezionato. Quest'ultima procedura svolgila utilizzando la localStorage -->
+
+        <h1 class="pt-5">Carica gli studenti</h1>
+
+        <form id="form-studenti">
+            <div class="form-group col-4">
+            <label for="nome">Nome:</label>
+            <input class="form-control" type="text" id="nome" name="nome"><br>
+
+            <label for="cognome">Cognome:</label>
+            <input class="form-control" type="text" id="cognome" name="cognome"><br>
+
+            <label for="avatar">Avatar:</label>
+            <input class="form-control" type="text" id="avatar" name="avatar"><br>
+
+            <button class="btn btn-success" type="submit">Aggiungi</button>
+            </div>
+        </form>
+
+        <hr>
+
+        <button class="btn btn-primary" id="btnPrint">Mostra studenti</button>
+
+        <div id="feed" class="row"></div>
+
+    </div>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
